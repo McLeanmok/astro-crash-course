@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+// component imports 
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+import H1 from "../components/H1.astro";
+import PostList from "../components/PostList.astro";
+---
+<Layout title="Blog | Rhythm Nation">
+	<section>
+		<Container>
+			<H1 text="Blog" />
+		</Container>
+	</section>
+	<section>
+		<Container>
+			{posts.map(post => (
+				<PostList posts={posts}/>
+			))}
+		</Container>
+	</section>
+</Layout>
